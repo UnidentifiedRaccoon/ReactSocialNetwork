@@ -1,0 +1,12 @@
+.app-wrapper {
+  display: grid;
+  /*width: 1200px;*/
+  grid-gap: 20px;
+  grid-auto-rows: minmax(100px, auto);
+}
+
+.app-main-content {
+  grid-column: 4 / 13;
+  grid-row: 2;
+  background-color: teal;
+}

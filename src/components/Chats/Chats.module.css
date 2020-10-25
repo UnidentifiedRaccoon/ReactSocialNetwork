@@ -1,0 +1,4 @@
+.chats {
+    display: grid;
+    grid-template-columns: 100px minmax(200px, 1fr);
+}
