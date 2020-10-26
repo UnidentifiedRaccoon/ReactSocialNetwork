@@ -8,8 +8,9 @@ import {Chats} from './components/Chats/Chats.jsx'
 import {Courses} from './components/Courses/Courses.jsx'
 
 
+
 const App = (props) => {
-    {console.log(props)}
+    // {debugger}
     return (
         <BrowserRouter>
 
@@ -21,8 +22,10 @@ const App = (props) => {
                     <Route path='/Profile' render={ () => <Profile/>}/>
                     {/*<Route path='/Chats' render={ () => <Chats data={props.data.chats}/>}/>*/}
                     <Route path='/Chats' render={ () => <Chats/>}/>
+
+
                     {/*<Route path='/Courses' render={ () => <Courses data={props.data.courses}/>}/>*/}
-                    <Route path='/Courses' render={ () => <Courses/>}/>
+                    <Route path='/Courses' render={ () => <Courses data={props.data.coursesData}/>}/>
                 </div>
             </div>
         </BrowserRouter>
