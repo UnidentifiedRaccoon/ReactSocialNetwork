@@ -9,10 +9,8 @@ const Chats = (props) => {
 
     return (
         <main className={cs.chats}>
-            {/*<ChatsContacts data={props.data.chatsContacts}/>*/}
-            <ChatsContacts/>
-            {/*<ChatWindow data={props.data.chatWindow}/>*/}
-            <ChatWindow/>
+            <ChatsContacts data={props.data.chatsContacts}/>
+            <ChatWindow data={props.data.chatWindow}/>
         </main>
     )
 }

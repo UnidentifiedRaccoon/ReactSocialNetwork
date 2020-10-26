@@ -10,7 +10,6 @@ import {Courses} from './components/Courses/Courses.jsx'
 
 
 const App = (props) => {
-    // {debugger}
     return (
         <BrowserRouter>
 
@@ -18,14 +17,9 @@ const App = (props) => {
                 <Header/>
                 <Navbar/>
                 <div className='app-main-content'>
-                    {/*<Route path='/Profile' render={ () => <Profile data={props.data.profile}/>}/>*/}
-                    <Route path='/Profile' render={ () => <Profile/>}/>
-                    {/*<Route path='/Chats' render={ () => <Chats data={props.data.chats}/>}/>*/}
-                    <Route path='/Chats' render={ () => <Chats/>}/>
-
-
-                    {/*<Route path='/Courses' render={ () => <Courses data={props.data.courses}/>}/>*/}
-                    <Route path='/Courses' render={ () => <Courses data={props.data.coursesData}/>}/>
+                    <Route path='/Profile' render={ () => <Profile data={props.data.profilePage}/>}/>
+                    <Route path='/Chats' render={ () => <Chats data={props.data.chatsPage}/>}/>
+                    <Route path='/Courses' render={ () => <Courses data={props.data.coursesPage}/>}/>
                 </div>
             </div>
         </BrowserRouter>

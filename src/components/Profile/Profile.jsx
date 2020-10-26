@@ -9,8 +9,7 @@ const Profile = (props) => {
     return (
         <main className={cs.profile}>
             <UserInfo/>
-            {/*<UserPosts data={props.data.userPosts}/>*/}
-            <UserPosts/>
+            <UserPosts data={props.data.userPosts}/>
         </main>
     )
 }
