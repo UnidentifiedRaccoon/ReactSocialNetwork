@@ -1,3 +1,7 @@
+let rerenderEntireTree = () => {
+    console.log('Дерево должно было обновиться')
+}
+
 let state = {
     profilePage:  {
         userPosts: {
@@ -5,7 +9,8 @@ let state = {
                 {id: 0, message: "Hi it's my first post", like: 6, love: 1},
                 {id: 1, message: "Stop... This post should be first! What's happened!!!", like: 13, love: 8},
                 {id: 2, message: "Looks like someone make a mistake in code", like: -4, love: -5},
-            ]
+            ],
+            newPostText: 'win'
         }
     },
     chatsPage: {
@@ -37,4 +42,25 @@ let state = {
     }
 }
 
-export {state}
+const addNewPost = () => {
+    let newPost = {
+        id: 2,
+        message: state.profilePage.userPosts.newPostText,
+        like: -4,
+        love: -5
+    };
+    state.profilePage.userPosts.postsData.push(newPost);
+    rerenderEntireTree();
+    state.profilePage.userPosts.newPostText = '';
+}
+
+const onChangeNewPost = (text) => {
+    state.profilePage.userPosts.newPostText = text;
+    rerenderEntireTree();
+}
+
+const subscribe = (observer) => { // first learned pattern observer
+    rerenderEntireTree = observer
+}
+
+export {state, addNewPost, onChangeNewPost, subscribe}
