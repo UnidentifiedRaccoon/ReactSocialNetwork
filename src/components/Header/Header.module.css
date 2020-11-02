@@ -1,5 +1,5 @@
 .header {
-    grid-column: 1/13;
+    grid-column: 1/4;
     grid-row: 1;
     background-color: blue;
 }

@@ -21,7 +21,7 @@ const UserPosts = (props) => {
             <input type='button' value='Add post' onClick={addNewPost}/>
 
             <section className='postsFeed'>
-                <ul className='postsList'>
+                <ul className='postsFeed__list'>
                     {postsListElements}
                 </ul>
             </section>

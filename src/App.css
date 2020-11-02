@@ -1,12 +1,8 @@
 .app-wrapper {
   display: grid;
+  grid-template-columns: minmax(200px, 1fr) 6fr minmax(200px, 1fr);
   /*width: 1200px;*/
   grid-gap: 20px;
   grid-auto-rows: minmax(100px, auto);
-}
-
-.app-main-content {
-  grid-column: 4 / 13;
-  grid-row: 2;
-  background-color: teal;
+  justify-items: stretch;
 }

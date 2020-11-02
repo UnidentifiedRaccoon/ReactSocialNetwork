@@ -3,6 +3,15 @@ let rerenderEntireTree = () => {
 }
 
 let state = {
+    sideBar: {
+        friendsOnline: {
+            friendsData: [
+                {id: 0, icon: 'src', name: 'Spider-Man' },
+                {id: 1, icon: 'src', name: 'Ed Sheeran' },
+                {id: 2, icon: 'src', name: 'Симон' }
+            ]
+        }
+    },
     profilePage:  {
         userPosts: {
             postsData: [

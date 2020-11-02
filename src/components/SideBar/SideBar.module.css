@@ -1,5 +1,5 @@
-.courses {
-    grid-column: 2 / 3;
+.sideBar {
+    grid-column: 3 / 4;
     grid-row: 2;
     background-color: teal;
 }
