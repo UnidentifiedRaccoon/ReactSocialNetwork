@@ -25,10 +25,11 @@ let state = {
         },
         chatWindow: {
             messagesData: [
-                {id: 0, text: 'Hello, world'},
-                {id: 1, text: 'Thanos\'s snap'},
-                {id: 2, text: 'Your interlocutor was annihilate'},
-            ]
+                {id: 0, message: 'Hello, world'},
+                {id: 1, message: 'Thanos\'s snap'},
+                {id: 2, message: 'Your interlocutor was annihilate'},
+            ],
+            newMessageText: 'pingvin'
         }
     },
     coursesPage: {
@@ -59,8 +60,28 @@ const onChangeNewPost = (text) => {
     rerenderEntireTree();
 }
 
+const addNewMessage = () => {
+    let newMessage = {
+        id: 4,
+        message: state.chatsPage.chatWindow.newMessageText
+    };
+    state.chatsPage.chatWindow.messagesData.push(newMessage)
+    rerenderEntireTree()
+    state.chatsPage.chatWindow.newMessageText = ''
+}
+
+const onChangeMessage = (text) => {
+    state.chatsPage.chatWindow.newMessageText = text
+    rerenderEntireTree()
+}
+
 const subscribe = (observer) => { // first learned pattern observer
     rerenderEntireTree = observer
 }
 
-export {state, addNewPost, onChangeNewPost, subscribe}
+export {state,
+    addNewPost,
+    onChangeNewPost,
+    addNewMessage,
+    onChangeMessage,
+    subscribe}

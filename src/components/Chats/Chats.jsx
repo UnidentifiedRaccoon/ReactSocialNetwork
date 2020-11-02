@@ -10,7 +10,9 @@ const Chats = (props) => {
     return (
         <main className={cs.chats}>
             <ChatsContacts data={props.data.chatsContacts}/>
-            <ChatWindow data={props.data.chatWindow}/>
+            <ChatWindow data={props.data.chatWindow}
+                        addNewMessage={props.addNewMessage}
+                        onChangeMessage={props.onChangeMessage}/>
         </main>
     )
 }

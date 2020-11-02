@@ -17,8 +17,12 @@ const App = (props) => {
                 <Header/>
                 <Navbar/>
                 <div className='app-main-content'>
-                    <Route path='/Profile' render={ () => <Profile data={props.data.profilePage} addNewPost={props.addNewPost} onChangeNewPost={props.onChangeNewPost}/>}/>
-                    <Route path='/Chats' render={ () => <Chats data={props.data.chatsPage}/>}/>
+                    <Route path='/Profile' render={ () => <Profile data={props.data.profilePage}
+                                                                   addNewPost={props.addNewPost}
+                                                                   onChangeNewPost={props.onChangeNewPost}/>}/>
+                    <Route path='/Chats' render={ () => <Chats data={props.data.chatsPage}
+                                                               addNewMessage={props.addNewMessage}
+                                                               onChangeMessage={props.onChangeMessage}/>}/>
                     <Route path='/Courses' render={ () => <Courses data={props.data.coursesPage}/>}/>
                 </div>
             </div>
