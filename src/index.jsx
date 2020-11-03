@@ -3,23 +3,25 @@ import ReactDOM from 'react-dom';
 import App from './App';
 // import './index.css';
 // import * as serviceWorker from './serviceWorker';
-import {state, addNewPost, onChangeNewPost, addNewMessage, onChangeNewMessage, subscribe} from './redux/state'
+import {store} from './redux/state.js'
+
+
 
 let rerenderEntireTree = () => {
     ReactDOM.render(
         <React.StrictMode>
-            <App data={state}
-                 addNewPost={addNewPost}
-                 onChangeNewPost={onChangeNewPost}
-                 addNewMessage={addNewMessage}
-                 onChangeNewMessage={onChangeNewMessage}/>
+            <App data={store.getState()}
+                 addNewPost={store.addNewPost.bind(store)}
+                 onChangeNewPost={store.onChangeNewPost.bind(store)}
+                 addNewMessage={store.addNewMessage.bind(store)}
+                 onChangeNewMessage={store.onChangeNewMessage.bind(store)}/>
         </React.StrictMode>,
         document.getElementById('root')
     );
 }
 
 rerenderEntireTree()
-subscribe(rerenderEntireTree)
+store.subscribe(rerenderEntireTree)
 
 
 
