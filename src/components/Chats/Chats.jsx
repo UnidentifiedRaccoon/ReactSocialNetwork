@@ -11,8 +11,7 @@ const Chats = (props) => {
         <main className={cs.chats}>
             <ChatsContacts data={props.data.chatsContacts}/>
             <ChatWindow data={props.data.chatWindow}
-                        addNewMessage={props.addNewMessage}
-                        onChangeNewMessage={props.onChangeNewMessage}/>
+                        dispatch={props.dispatch}/>
         </main>
     )
 }

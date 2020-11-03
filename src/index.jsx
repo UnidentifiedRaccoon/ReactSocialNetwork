@@ -11,10 +11,7 @@ let rerenderEntireTree = () => {
     ReactDOM.render(
         <React.StrictMode>
             <App data={store.getState()}
-                 addNewPost={store.addNewPost.bind(store)}
-                 onChangeNewPost={store.onChangeNewPost.bind(store)}
-                 addNewMessage={store.addNewMessage.bind(store)}
-                 onChangeNewMessage={store.onChangeNewMessage.bind(store)}/>
+                 dispatch={store.dispatch.bind(store)}/>
         </React.StrictMode>,
         document.getElementById('root')
     );

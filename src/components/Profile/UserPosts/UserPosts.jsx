@@ -6,12 +6,13 @@ const UserPosts = (props) => {
     let postsListElements = props.data.postsData.map(post => <Post key={post.id} message={post.message} like={post.like} love={post.love}/>)
     let textArea = React.createRef()
     let addNewPost = () => {
-        props.addNewPost()
+        props.dispatch({type: 'ADD-NEW-POST'});
     }
 
     let onChangeNewPost = () => {
         let text = textArea.current.value
-        props.onChangeNewPost(text)
+        let action = {type: 'ON-CHANGE-NEW-POST', newText: text};
+        props.dispatch(action);
     }
 
     return (

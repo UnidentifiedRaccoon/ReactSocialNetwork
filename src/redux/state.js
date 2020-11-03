@@ -57,33 +57,35 @@ let store = {
     subscribe(observer) {
         this._callSubscriber = observer
     },
-    addNewPost() {
-        let newPost = {
-            id: 2,
-            message: this._state.profilePage.userPosts.newPostText,
-            like: -4,
-            love: -5
-        };
-        this._state.profilePage.userPosts.postsData.push(newPost);
-        this._callSubscriber();
-        this._state.profilePage.userPosts.newPostText = '';
-    },
-    onChangeNewPost(text) {
-        this._state.profilePage.userPosts.newPostText = text;
-        this._callSubscriber();
-    },
-    addNewMessage() {
-        let newMessage = {
-            id: 4,
-            message: this._state.chatsPage.chatWindow.newMessageText
-        };
-        this._state.chatsPage.chatWindow.messagesData.push(newMessage)
-        this._callSubscriber()
-        this._state.chatsPage.chatWindow.newMessageText = ''
-    },
-    onChangeNewMessage(text) {
-        this._state.chatsPage.chatWindow.newMessageText = text
-        this._callSubscriber()
+    dispatch(action) {
+        if (action.type === 'ADD-NEW-POST') {
+            let newPost = {
+                id: 2,
+                message: this._state.profilePage.userPosts.newPostText,
+                like: -4,
+                love: -5
+            };
+            this._state.profilePage.userPosts.postsData.push(newPost);
+            this._callSubscriber();
+            this._state.profilePage.userPosts.newPostText = '';
+        }
+        else if (action.type === 'ON-CHANGE-NEW-POST') {
+            this._state.profilePage.userPosts.newPostText = action.newText;
+            this._callSubscriber(action.newText);
+        }
+        else if (action.type === 'ADD-NEW-MESSAGE') {
+            let newMessage = {
+                id: 4,
+                message: this._state.chatsPage.chatWindow.newMessageText
+            };
+            this._state.chatsPage.chatWindow.messagesData.push(newMessage);
+            this._callSubscriber();
+            this._state.chatsPage.chatWindow.newMessageText = '';
+        }
+        else if (action.type === 'ON-CHANGE-NEW-MESSAGE') {
+            this._state.chatsPage.chatWindow.newMessageText = action.newText;
+            this._callSubscriber();
+        }
     }
 }
 

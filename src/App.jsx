@@ -20,11 +20,9 @@ const App = (props) => {
                 <Navbar/>
                 <div className='app-main-content'>
                     <Route path='/Profile' render={ () => <Profile data={props.data.profilePage}
-                                                                   addNewPost={props.addNewPost}
-                                                                   onChangeNewPost={props.onChangeNewPost}/>}/>
+                                                                   dispatch={props.dispatch}/>}/>
                     <Route path='/Chats' render={ () => <Chats data={props.data.chatsPage}
-                                                               addNewMessage={props.addNewMessage}
-                                                               onChangeNewMessage={props.onChangeNewMessage}/>}/>
+                                                               dispatch={props.dispatch}/>}/>
                     <Route path='/Courses' render={ () => <Courses data={props.data.coursesPage}/>}/>
                 </div>
                 <SideBar data={props.data.sideBar}/>
