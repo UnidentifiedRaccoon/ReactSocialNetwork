@@ -24,7 +24,7 @@ const App = (props) => {
                                                                    onChangeNewPost={props.onChangeNewPost}/>}/>
                     <Route path='/Chats' render={ () => <Chats data={props.data.chatsPage}
                                                                addNewMessage={props.addNewMessage}
-                                                               onChangeMessage={props.onChangeMessage}/>}/>
+                                                               onChangeNewMessage={props.onChangeNewMessage}/>}/>
                     <Route path='/Courses' render={ () => <Courses data={props.data.coursesPage}/>}/>
                 </div>
                 <SideBar data={props.data.sideBar}/>

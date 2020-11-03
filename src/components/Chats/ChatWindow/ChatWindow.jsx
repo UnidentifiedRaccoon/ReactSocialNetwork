@@ -9,9 +9,9 @@ const ChatWindow = (props) => {
        let text = textArea.current.value
        props.addNewMessage(text)
     }
-    let onChangeMessage = () => {
+    let onChangeNewMessage = () => {
         let text = textArea.current.value
-        props.onChangeMessage(text)
+        props.onChangeNewMessage(text)
     }
 
     return(
@@ -19,7 +19,7 @@ const ChatWindow = (props) => {
             <ul className={cs.messagesList}>
                 {messagesListElements}
             </ul>
-            <textarea onChange={onChangeMessage} ref={textArea} value={props.data.newMessageText}></textarea>
+            <textarea onChange={onChangeNewMessage} ref={textArea} value={props.data.newMessageText}></textarea>
             <button onClick={addNewMessage}>Add message</button>
         </section>
 

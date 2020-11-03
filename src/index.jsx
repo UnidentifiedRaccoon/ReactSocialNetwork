@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 // import './index.css';
 // import * as serviceWorker from './serviceWorker';
-import {state, addNewPost, onChangeNewPost, addNewMessage, onChangeMessage, subscribe} from './redux/state'
+import {state, addNewPost, onChangeNewPost, addNewMessage, onChangeNewMessage, subscribe} from './redux/state'
 
 let rerenderEntireTree = () => {
     ReactDOM.render(
@@ -12,7 +12,7 @@ let rerenderEntireTree = () => {
                  addNewPost={addNewPost}
                  onChangeNewPost={onChangeNewPost}
                  addNewMessage={addNewMessage}
-                 onChangeMessage={onChangeMessage}/>
+                 onChangeNewMessage={onChangeNewMessage}/>
         </React.StrictMode>,
         document.getElementById('root')
     );

@@ -12,7 +12,7 @@ const Chats = (props) => {
             <ChatsContacts data={props.data.chatsContacts}/>
             <ChatWindow data={props.data.chatWindow}
                         addNewMessage={props.addNewMessage}
-                        onChangeMessage={props.onChangeMessage}/>
+                        onChangeNewMessage={props.onChangeNewMessage}/>
         </main>
     )
 }
