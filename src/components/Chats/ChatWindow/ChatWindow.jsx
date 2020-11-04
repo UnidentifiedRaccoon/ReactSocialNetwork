@@ -1,16 +1,18 @@
 import React from 'react'
 import cs from './ChatWindow.module.css'
 import  {MessageItem} from './MessageItem/MessageItem.jsx'
+import {actionCreatorAddNewMessage, actionCreatorOnChangeNewMessage} from '../../../redux/state.js'
 
 const ChatWindow = (props) => {
     let messagesListElements = props.data.messagesData.map(messageItem => <MessageItem key={messageItem.id} message={messageItem.message}/>)
     let textArea = React.createRef();
     let addNewMessage = () => {
-       props.dispatch({type: 'ADD-NEW-MESSAGE'});
+        let action = actionCreatorAddNewMessage();
+        props.dispatch(action);
     }
     let onChangeNewMessage = () => {
-        let text = textArea.current.value;
-        let action = {type: 'ON-CHANGE-NEW-MESSAGE', newText: text};
+        let newText = textArea.current.value;
+        let action = actionCreatorOnChangeNewMessage(newText);
         props.dispatch(action);
     }
 

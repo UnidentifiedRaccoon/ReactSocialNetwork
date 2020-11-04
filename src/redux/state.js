@@ -1,15 +1,20 @@
+const ADD_NEW_POST = 'ADD-NEW-POST';
+const ON_CHANGE_NEW_POST = 'ON-CHANGE-NEW-POST';
+const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE';
+const ON_CHANGE_NEW_MESSAGE = 'ON-CHANGE-NEW-MESSAGE';
+
 let store = {
     _state: {
         sideBar: {
             friendsOnline: {
                 friendsData: [
-                    {id: 0, icon: 'src', name: 'Spider-Man' },
-                    {id: 1, icon: 'src', name: 'Ed Sheeran' },
-                    {id: 2, icon: 'src', name: 'Симон' }
+                    {id: 0, icon: 'src', name: 'Spider-Man'},
+                    {id: 1, icon: 'src', name: 'Ed Sheeran'},
+                    {id: 2, icon: 'src', name: 'Симон'}
                 ]
             }
         },
-        profilePage:  {
+        profilePage: {
             userPosts: {
                 postsData: [
                     {id: 0, message: "Hi it's my first post", like: 6, love: 1},
@@ -57,36 +62,49 @@ let store = {
     subscribe(observer) {
         this._callSubscriber = observer
     },
+    _addNewPost() {
+        let newPost = {
+            id: 2,
+            message: this._state.profilePage.userPosts.newPostText,
+            like: -4,
+            love: -5
+        };
+        this._state.profilePage.userPosts.postsData.push(newPost);
+        this._callSubscriber();
+        this._state.profilePage.userPosts.newPostText = '';
+    },
+    _onChangeNewPost(newText) {
+        this._state.profilePage.userPosts.newPostText = newText;
+        this._callSubscriber();
+    },
+    _addNewMessage() {
+        let newMessage = {
+            id: 4,
+            message: this._state.chatsPage.chatWindow.newMessageText
+        };
+        this._state.chatsPage.chatWindow.messagesData.push(newMessage);
+        this._callSubscriber();
+        this._state.chatsPage.chatWindow.newMessageText = '';
+    },
+    _onChangeNewMessage(newText) {
+        this._state.chatsPage.chatWindow.newMessageText = newText;
+        this._callSubscriber();
+    },
     dispatch(action) {
-        if (action.type === 'ADD-NEW-POST') {
-            let newPost = {
-                id: 2,
-                message: this._state.profilePage.userPosts.newPostText,
-                like: -4,
-                love: -5
-            };
-            this._state.profilePage.userPosts.postsData.push(newPost);
-            this._callSubscriber();
-            this._state.profilePage.userPosts.newPostText = '';
-        }
-        else if (action.type === 'ON-CHANGE-NEW-POST') {
-            this._state.profilePage.userPosts.newPostText = action.newText;
-            this._callSubscriber(action.newText);
-        }
-        else if (action.type === 'ADD-NEW-MESSAGE') {
-            let newMessage = {
-                id: 4,
-                message: this._state.chatsPage.chatWindow.newMessageText
-            };
-            this._state.chatsPage.chatWindow.messagesData.push(newMessage);
-            this._callSubscriber();
-            this._state.chatsPage.chatWindow.newMessageText = '';
-        }
-        else if (action.type === 'ON-CHANGE-NEW-MESSAGE') {
-            this._state.chatsPage.chatWindow.newMessageText = action.newText;
-            this._callSubscriber();
+        switch (action.type) {
+            case ADD_NEW_POST: this._addNewPost(); break;
+            case ON_CHANGE_NEW_POST: this._onChangeNewPost(action.newText); break;
+            case ADD_NEW_MESSAGE: this._addNewMessage(); break;
+            case ON_CHANGE_NEW_MESSAGE: this._onChangeNewMessage(action.newText); break;
         }
     }
 }
+
+export const actionCreatorAddNewPost = () => ({type: ADD_NEW_POST});
+export const actionCreatorOnChangeNewPost = (newText) =>
+    ({type: ON_CHANGE_NEW_POST, newText});
+export const actionCreatorAddNewMessage = () => ({type: ADD_NEW_MESSAGE});
+export const actionCreatorOnChangeNewMessage = (newText) =>
+    ({type: ON_CHANGE_NEW_MESSAGE, newText});
 
 export {store}

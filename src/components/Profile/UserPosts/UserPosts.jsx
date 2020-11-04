@@ -1,17 +1,19 @@
 import React from 'react'
 // import cs from './UserPosts.module.css'
 import {PostList__item as Post} from './PostList__item/PostList__item.jsx'
+import {actionCreatorAddNewPost, actionCreatorOnChangeNewPost} from '../../../redux/state.js'
 
 const UserPosts = (props) => {
     let postsListElements = props.data.postsData.map(post => <Post key={post.id} message={post.message} like={post.like} love={post.love}/>)
     let textArea = React.createRef()
     let addNewPost = () => {
-        props.dispatch({type: 'ADD-NEW-POST'});
+        let action = actionCreatorAddNewPost();
+        props.dispatch(action);
     }
 
     let onChangeNewPost = () => {
-        let text = textArea.current.value
-        let action = {type: 'ON-CHANGE-NEW-POST', newText: text};
+        let newText = textArea.current.value
+        let action = actionCreatorOnChangeNewPost(newText);
         props.dispatch(action);
     }
 
