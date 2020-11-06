@@ -1,7 +1,7 @@
 import React from 'react'
 import cs from './ChatWindow.module.css'
 import  {MessageItem} from './MessageItem/MessageItem.jsx'
-import {actionCreatorAddNewMessage, actionCreatorOnChangeNewMessage} from '../../../redux/state.js'
+import {actionCreatorAddNewMessage, actionCreatorOnChangeNewMessage} from '../../../redux/reducers/chatsPage-reducer'
 
 const ChatWindow = (props) => {
     let messagesListElements = props.data.messagesData.map(messageItem => <MessageItem key={messageItem.id} message={messageItem.message}/>)

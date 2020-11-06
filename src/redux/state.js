@@ -1,7 +1,7 @@
-const ADD_NEW_POST = 'ADD-NEW-POST';
-const ON_CHANGE_NEW_POST = 'ON-CHANGE-NEW-POST';
-const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE';
-const ON_CHANGE_NEW_MESSAGE = 'ON-CHANGE-NEW-MESSAGE';
+import profilePageReducer from './reducers/profilePage-reducer.js'
+import chatsPageReducer from './reducers/chatsPage-reducer.js'
+import coursesPageReducer from './reducers/coursesPage-reducer.js'
+import sideBarReducer from './reducers/sideBar-reducer.js'
 
 let store = {
     _state: {
@@ -62,49 +62,15 @@ let store = {
     subscribe(observer) {
         this._callSubscriber = observer
     },
-    _addNewPost() {
-        let newPost = {
-            id: 2,
-            message: this._state.profilePage.userPosts.newPostText,
-            like: -4,
-            love: -5
-        };
-        this._state.profilePage.userPosts.postsData.push(newPost);
-        this._callSubscriber();
-        this._state.profilePage.userPosts.newPostText = '';
-    },
-    _onChangeNewPost(newText) {
-        this._state.profilePage.userPosts.newPostText = newText;
-        this._callSubscriber();
-    },
-    _addNewMessage() {
-        let newMessage = {
-            id: 4,
-            message: this._state.chatsPage.chatWindow.newMessageText
-        };
-        this._state.chatsPage.chatWindow.messagesData.push(newMessage);
-        this._callSubscriber();
-        this._state.chatsPage.chatWindow.newMessageText = '';
-    },
-    _onChangeNewMessage(newText) {
-        this._state.chatsPage.chatWindow.newMessageText = newText;
-        this._callSubscriber();
-    },
     dispatch(action) {
-        switch (action.type) {
-            case ADD_NEW_POST: this._addNewPost(); break;
-            case ON_CHANGE_NEW_POST: this._onChangeNewPost(action.newText); break;
-            case ADD_NEW_MESSAGE: this._addNewMessage(); break;
-            case ON_CHANGE_NEW_MESSAGE: this._onChangeNewMessage(action.newText); break;
-        }
+        // debugger
+        profilePageReducer(this._state.profilePage, action);
+        chatsPageReducer(this._state.chatsPage, action);
+        coursesPageReducer(this._state.coursesPage, action);
+        sideBarReducer(this._state.sideBar, action);
+
+        this._callSubscriber();
     }
 }
-
-export const actionCreatorAddNewPost = () => ({type: ADD_NEW_POST});
-export const actionCreatorOnChangeNewPost = (newText) =>
-    ({type: ON_CHANGE_NEW_POST, newText});
-export const actionCreatorAddNewMessage = () => ({type: ADD_NEW_MESSAGE});
-export const actionCreatorOnChangeNewMessage = (newText) =>
-    ({type: ON_CHANGE_NEW_MESSAGE, newText});
 
 export {store}

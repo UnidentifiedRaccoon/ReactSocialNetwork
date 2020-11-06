@@ -1,7 +1,8 @@
 import React from 'react'
 // import cs from './UserPosts.module.css'
 import {PostList__item as Post} from './PostList__item/PostList__item.jsx'
-import {actionCreatorAddNewPost, actionCreatorOnChangeNewPost} from '../../../redux/state.js'
+import {actionCreatorAddNewPost, actionCreatorOnChangeNewPost} from '../../../redux/reducers/profilePage-reducer.js'
+
 
 const UserPosts = (props) => {
     let postsListElements = props.data.postsData.map(post => <Post key={post.id} message={post.message} like={post.like} love={post.love}/>)
