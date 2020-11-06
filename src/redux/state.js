@@ -64,12 +64,12 @@ let store = {
     },
     dispatch(action) {
         // debugger
-        profilePageReducer(this._state.profilePage, action);
-        chatsPageReducer(this._state.chatsPage, action);
-        coursesPageReducer(this._state.coursesPage, action);
-        sideBarReducer(this._state.sideBar, action);
+        this._state.profilePage = profilePageReducer(this._state.profilePage, action);
+        this._state.chatsPage =  chatsPageReducer(this._state.chatsPage, action);
+        this._state.coursesPage = coursesPageReducer(this._state.coursesPage, action);
+        this._state.sideBar = sideBarReducer(this._state.sideBar, action);
 
-        this._callSubscriber();
+        this._callSubscriber(this._state);
     }
 }
 
