@@ -5,12 +5,12 @@ import {ChatsContactsContainer} from './ChatsContacts/ChatsContactsContainer.jsx
 import {ChatWindowContainer} from './ChatWindow/ChatWindowContainer.jsx'
 
 
-const Chats = (props) => {
+const Chats = () => {
 
     return (
         <main className={cs.chats}>
-            <ChatsContactsContainer store={props.store}/>
-            <ChatWindowContainer store={props.store}/>
+            <ChatsContactsContainer/>
+            <ChatWindowContainer/>
         </main>
     )
 }

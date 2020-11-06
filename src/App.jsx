@@ -19,8 +19,8 @@ const App = (props) => {
                 <Header/>
                 <Navbar/>
                 <div className='app-main-content'>
-                    <Route path='/Profile' render={ () => <Profile store={props.store}/>}/>
-                    <Route path='/Chats' render={ () => <Chats store={props.store}/>}/>
+                    <Route path='/Profile' render={ () => <Profile/>}/>
+                    <Route path='/Chats' render={ () => <Chats/>}/>
                     <Route path='/Courses' render={ () => <Courses data={props.store.getState().coursesPage}/>}/>
                 </div>
                 <SideBar data={props.store.getState().sideBar}/>

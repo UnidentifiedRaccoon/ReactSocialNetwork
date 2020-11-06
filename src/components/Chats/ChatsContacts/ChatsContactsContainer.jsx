@@ -1,10 +1,17 @@
 import React from 'react'
 import {ChatsContacts} from './ChatsContacts'
+import Context from '../../../context'
 
-const ChatsContactsContainer = (props) => {
-    let chatsContacts = props.store.getState().chatsPage.chatsContacts;
+const ChatsContactsContainer = () => {
     return (
-        <ChatsContacts chatsContacts={chatsContacts}/>
+        <Context.Consumer>
+            {store => {
+                let chatsContacts = store.getState().chatsPage.chatsContacts;
+                return (
+                    <ChatsContacts chatsContacts={chatsContacts}/>
+                )
+            }}
+        </Context.Consumer>
     )
 }
 
