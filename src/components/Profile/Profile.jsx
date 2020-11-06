@@ -1,16 +1,14 @@
 import React from 'react';
 import cs from './Profile.module.css'
 import {UserInfo} from './UserInfo/UserInfo.jsx'
-import {UserPosts} from './UserPosts/UserPosts.jsx'
+import {UserPostsContainer} from './UserPosts/UserPostsContainer.jsx'
 
 
 const Profile = (props) => {
-
     return (
         <main className={cs.profile}>
             <UserInfo/>
-            <UserPosts data={props.data.userPosts}
-                       dispatch={props.dispatch}/>
+            <UserPostsContainer store={props.store}/>
         </main>
     )
 }

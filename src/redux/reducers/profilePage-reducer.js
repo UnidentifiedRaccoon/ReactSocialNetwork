@@ -12,7 +12,7 @@ let initialState = {
     }
 };
 
-let addNewPost = (state) => {
+let onClickAddPost = (state) => {
     let newPost = {
         id: 2,
         message: state.userPosts.newPostText,
@@ -24,19 +24,18 @@ let addNewPost = (state) => {
 }
 
 
-let onChangeNewPost = (state, newText) => {
+let onChangeUpdatePost = (state, newText) => {
     state.userPosts.newPostText = newText;
 }
 
 const profilePageReducer = (state = initialState, action) => {
-    debugger
     switch (action.type) {
         case ADD_NEW_POST: {
-            addNewPost(state);
+            onClickAddPost(state);
             return state;
         }
         case ON_CHANGE_NEW_POST: {
-            onChangeNewPost(state, action.newText);
+            onChangeUpdatePost(state, action.newText);
             return state;
         }
         default: {
@@ -45,8 +44,8 @@ const profilePageReducer = (state = initialState, action) => {
     }
 }
 
-export const actionCreatorAddNewPost = () => ({type: ADD_NEW_POST});
-export const actionCreatorOnChangeNewPost = (newText) =>
+export const actionCreatorOnClickAddPost = () => ({type: ADD_NEW_POST});
+export const actionCreatorOnChangeUpdatePost = (newText) =>
     ({type: ON_CHANGE_NEW_POST, newText});
 
 export default profilePageReducer;
