@@ -27,22 +27,31 @@ let addNewMessage = (state) => {
         id: 4,
         message: state.chatWindow.newMessageText
     };
-    state.chatWindow.messagesData.push(newMessage);
-    state.chatWindow.newMessageText = '';
+    return {
+        ...state,
+        chatWindow: {
+            ...state.chatWindow,
+            messagesData: [...state.chatWindow.messagesData, newMessage],
+            newMessageText: ''
+        },
+    }
 }
 let onChangeNewMessage = (state, newText) => {
-    state.chatWindow.newMessageText = newText;
+    return {
+        ...state,
+        chatWindow: {
+            ...state.chatWindow,
+            newMessageText: newText,
+        }
+    }
 }
-
 const chatsPageReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_NEW_MESSAGE: {
-            addNewMessage(state);
-            return state;
+            return addNewMessage(state);
         }
         case ON_CHANGE_NEW_MESSAGE: {
-            onChangeNewMessage(state, action.newText);
-            return state;
+            return onChangeNewMessage(state, action.newText);
         }
         default: {
             return state;

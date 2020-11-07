@@ -19,24 +19,33 @@ let onClickAddPost = (state) => {
         like: -4,
         love: -5
     };
-    state.userPosts.postsData.push(newPost);
-    state.userPosts.newPostText = '';
+    return {
+        ...state,
+        userPosts: {
+            ...state.userPosts,
+            postsData: [...state.userPosts.postsData, newPost],
+            newPostText: '',
+        }
+    }
 }
 
 
 let onChangeUpdatePost = (state, newText) => {
-    state.userPosts.newPostText = newText;
+    return {
+        userPosts: {
+            ...state.userPosts,
+            newPostText: newText,
+        }
+    }
 }
 
 const profilePageReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_NEW_POST: {
-            onClickAddPost(state);
-            return state;
+            return onClickAddPost(state);
         }
         case ON_CHANGE_NEW_POST: {
-            onChangeUpdatePost(state, action.newText);
-            return state;
+            return onChangeUpdatePost(state, action.newText);
         }
         default: {
             return state;
