@@ -16,6 +16,9 @@ const Navbar = () => {
                     <NavLink to='/Courses' className={cs.navList__link} activeClassName={cs.navList__link_active}>Courses</NavLink>
                 </li>
                 <li className={cs.navList__item}>Friends</li>
+                <li className={cs.navList__item}>
+                    <NavLink to='/FindUsers'>FindUsers</NavLink>
+                </li>
                 <li className={cs.navList__item}>Settings</li>
                 <li className={cs.navList__item}>Support and FAQ</li>
             </ul>

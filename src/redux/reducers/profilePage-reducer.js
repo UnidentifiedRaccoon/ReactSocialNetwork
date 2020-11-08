@@ -41,15 +41,13 @@ let onChangeUpdatePost = (state, newText) => {
 
 const profilePageReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_NEW_POST: {
+        case ADD_NEW_POST:
             return onClickAddPost(state);
-        }
-        case ON_CHANGE_NEW_POST: {
+
+        case ON_CHANGE_NEW_POST:
             return onChangeUpdatePost(state, action.newText);
-        }
-        default: {
-            return state;
-        }
+
+        default: return state;
     }
 }
 

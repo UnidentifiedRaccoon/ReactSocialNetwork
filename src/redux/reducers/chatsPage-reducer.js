@@ -47,15 +47,13 @@ let onChangeNewMessage = (state, newText) => {
 }
 const chatsPageReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_NEW_MESSAGE: {
+        case ADD_NEW_MESSAGE:
             return addNewMessage(state);
-        }
-        case ON_CHANGE_NEW_MESSAGE: {
+
+        case ON_CHANGE_NEW_MESSAGE:
             return onChangeNewMessage(state, action.newText);
-        }
-        default: {
-            return state;
-        }
+
+        default: return state;
 
     }
 }
