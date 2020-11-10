@@ -6,3 +6,18 @@
     width: 100px;
     height: 100px;
 }
+
+.paginationList {
+    list-style: none;
+    display: flex;
+}
+
+.paginationItem{
+    padding: 10px;
+    color: greenyellow;
+}
+
+.paginationItemActive {
+    font-weight: bold;
+    color: teal;
+}
