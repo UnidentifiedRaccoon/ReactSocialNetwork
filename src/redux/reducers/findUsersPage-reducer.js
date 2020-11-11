@@ -3,6 +3,7 @@ const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET-USERS'
 const SET_ACTIVE_PAGE = 'SET-ACTIVE-PAGE'
 const SET_TOTAL_COUNT = 'SET-TOTAL-COUNT'
+const SET_IS_LOADING = 'SET-IS-LOADING'
 
 
 let initialState = {
@@ -10,6 +11,7 @@ let initialState = {
     totalCount: 0,
     count: 5,
     currentPage: 1,
+    isLoading: true,
 };
 
 const findUsersPageReducer = (state = initialState, action) => {
@@ -55,6 +57,12 @@ const findUsersPageReducer = (state = initialState, action) => {
                 totalCount: action.totalCount,
             }
         }
+        case SET_IS_LOADING: {
+            return {
+                ...state,
+                isLoading: action.isLoading,
+            }
+        }
         default: {
             return state
         }
@@ -68,6 +76,7 @@ export const unfollowAC = (userID) => ({type: UNFOLLOW, userID});
 export const setUsersAC = (users) => ({type: SET_USERS, usersData: users})
 export const setActivePageAC = (pageNumber) => ({type: SET_ACTIVE_PAGE, pageNumber})
 export const setTotalCountAC = (totalCount) => ({type: SET_TOTAL_COUNT, totalCount})
+export const setIsLoadingAC = (isLoading) => ({type: SET_IS_LOADING, isLoading})
 
 
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import cs from './FindUsers.module.css'
-import icon from '../../../img/anon.png'
+import icon from '../../../assets/img/anon.png'
 
 const FindUsers = (props) => {
     let totalCount = props.totalCount;
