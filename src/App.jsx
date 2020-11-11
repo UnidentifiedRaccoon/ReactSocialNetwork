@@ -7,7 +7,7 @@ import {Profile} from './components/Profile/Profile.jsx'
 import {Chats} from './components/Chats/Chats.jsx'
 import {Courses} from './components/Courses/Courses.jsx'
 import {SideBar} from './components/SideBar/SideBar.jsx'
-import FindUsersContainer from './components/FindUsers/FindUsersContainer'
+import FindUsersContainer from './components/FindUsersContainer/FindUsersContainer'
 
 
 

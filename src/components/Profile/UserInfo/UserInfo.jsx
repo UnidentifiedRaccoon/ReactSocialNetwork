@@ -5,7 +5,7 @@ const UserInfo = (props) => {
     return (
         <section className='user-info'>
             <div>
-                <img alt='Wallpaper' src='https://hi-tech.ua/wp-content/uploads/2020/05/Facebook-design.jpg'/>
+                {/*<img alt='Wallpaper' src='https://hi-tech.ua/wp-content/uploads/2020/05/Facebook-design.jpg'/>*/}
             </div>
             <b>User info</b>
         </section>
