@@ -9,13 +9,12 @@ const SET_IS_LOADING = 'SET-IS-LOADING'
 let initialState = {
     usersData: [],
     totalCount: 0,
-    count: 5,
+    count: 10,
     currentPage: 1,
     isLoading: true,
 };
 
 const findUsersPageReducer = (state = initialState, action) => {
-    window.state = state;
     switch (action.type) {
         case FOLLOW: {
             return {
@@ -71,12 +70,12 @@ const findUsersPageReducer = (state = initialState, action) => {
 
 export default findUsersPageReducer
 
-export const followAC = (userID) => ({type: FOLLOW, userID});
-export const unfollowAC = (userID) => ({type: UNFOLLOW, userID});
-export const setUsersAC = (users) => ({type: SET_USERS, usersData: users})
-export const setActivePageAC = (pageNumber) => ({type: SET_ACTIVE_PAGE, pageNumber})
-export const setTotalCountAC = (totalCount) => ({type: SET_TOTAL_COUNT, totalCount})
-export const setIsLoadingAC = (isLoading) => ({type: SET_IS_LOADING, isLoading})
+export const follow = (userID) => ({type: FOLLOW, userID});
+export const unfollow = (userID) => ({type: UNFOLLOW, userID});
+export const setUsers = (users) => ({type: SET_USERS, usersData: users})
+export const setActivePage = (pageNumber) => ({type: SET_ACTIVE_PAGE, pageNumber})
+export const setTotalCount = (totalCount) => ({type: SET_TOTAL_COUNT, totalCount})
+export const setIsLoading = (isLoading) => ({type: SET_IS_LOADING, isLoading})
 
 
 

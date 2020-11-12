@@ -1,6 +1,7 @@
 import React from 'react';
 import cs from './FindUsers.module.css'
-import icon from '../../../assets/img/anon.png'
+import icon from '../../assets/img/anon.png'
+import {NavLink} from 'react-router-dom'
 
 const FindUsers = (props) => {
     let totalCount = props.totalCount;
@@ -30,8 +31,12 @@ const FindUsers = (props) => {
                         <li key={user.id}>
                             <article>
                                 <div>
-                                    <img className={cs.icon} alt='UserIcon'
-                                         src={user.photos.small != null ? user.photos.small : icon}/>
+                                    <NavLink to={'/profile/' + user.id}>
+                                        <img className={cs.icon} alt='UserIcon'
+                                             src={user.photos.small != null ? user.photos.small : icon}/>
+                                    </NavLink>
+
+
                                     {user.followed
                                         ? <button onClick={() => {
                                             props.unfollow(user.id)

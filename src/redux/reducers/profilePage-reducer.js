@@ -1,5 +1,6 @@
 const ADD_NEW_POST = 'ADD-NEW-POST';
 const ON_CHANGE_NEW_POST = 'ON-CHANGE-NEW-POST';
+const SET_PROFILE = 'SET-PROFILE';
 
 let initialState = {
     userPosts: {
@@ -9,7 +10,8 @@ let initialState = {
             {id: 2, message: "Looks like someone make a mistake in code", like: -4, love: -5},
         ],
         newPostText: 'win'
-    }
+    },
+    profile: null,
 };
 
 let onClickAddPost = (state) => {
@@ -32,6 +34,7 @@ let onClickAddPost = (state) => {
 
 let onChangeUpdatePost = (state, newText) => {
     return {
+        ...state,
         userPosts: {
             ...state.userPosts,
             newPostText: newText,
@@ -39,20 +42,33 @@ let onChangeUpdatePost = (state, newText) => {
     }
 }
 
+
 const profilePageReducer = (state = initialState, action) => {
+    // debugger
     switch (action.type) {
         case ADD_NEW_POST:
             return onClickAddPost(state);
 
         case ON_CHANGE_NEW_POST:
             return onChangeUpdatePost(state, action.newText);
+        case SET_PROFILE: {
+            return {
+                ...state,
+                profile: action.profile,
+            }
+        }
 
-        default: return state;
+
+
+
+        default:
+            return state;
     }
 }
 
 export const actionCreatorOnClickAddPost = () => ({type: ADD_NEW_POST});
 export const actionCreatorOnChangeUpdatePost = (newText) =>
     ({type: ON_CHANGE_NEW_POST, newText});
+export const setProfile = (profile) => ({type: SET_PROFILE, profile});
 
 export default profilePageReducer;

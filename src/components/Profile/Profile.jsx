@@ -4,13 +4,13 @@ import {UserInfo} from './UserInfo/UserInfo.jsx'
 import {UserPostsContainer} from './UserPosts/UserPostsContainer.jsx'
 
 
-const Profile = () => {
+const Profile = (props) => {
     return (
         <main className={cs.profile}>
-            <UserInfo/>
+            <UserInfo profile={props.profile}/>
             <UserPostsContainer/>
         </main>
     )
 }
 
-export {Profile}
+export default Profile

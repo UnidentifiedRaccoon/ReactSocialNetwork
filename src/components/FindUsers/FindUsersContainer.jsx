@@ -1,17 +1,16 @@
 import React from 'react';
 import {
-    followAC,
-    unfollowAC,
-    setUsersAC,
-    setActivePageAC,
-    setTotalCountAC,
-    setIsLoadingAC,
+    follow,
+    unfollow,
+    setUsers,
+    setActivePage,
+    setTotalCount,
+    setIsLoading,
 } from '../../redux/reducers/findUsersPage-reducer'
 import {connect} from 'react-redux'
-import FindUsers from './FindUsers/FindUsers'
+import FindUsers from './FindUsers'
 import Loading from '../Common/Loading/Loading'
 import * as axios from 'axios'
-
 
 
 class FindUsersAPIContainer extends React.Component {
@@ -61,28 +60,15 @@ let mapStateToProps = (state) => ({
     count: state.findUsersPage.count,
     totalCount: state.findUsersPage.totalCount,
     currentPage: state.findUsersPage.currentPage,
-    isLoading:  state.findUsersPage.isLoading
+    isLoading: state.findUsersPage.isLoading
 })
-let mapDispatchToProps = (dispatch) => ({
-    follow: (userID) => {
-        dispatch(followAC(userID));
-    },
-    unfollow: (userID) => {
-        dispatch(unfollowAC(userID));
-    },
-    setUsers: (users) => {
-        dispatch(setUsersAC(users));
-    },
-    setActivePage: (pageNumber) => {
-        dispatch(setActivePageAC(pageNumber));
-    },
-    setTotalCount: (totalCount) => {
-        dispatch(setTotalCountAC(totalCount));
-    },
-    setIsLoading: (isLoading) => {
-        dispatch(setIsLoadingAC(isLoading));
-    },
-})
-const FindUsersContainer = connect(mapStateToProps, mapDispatchToProps)(FindUsersAPIContainer)
+const FindUsersContainer = connect(mapStateToProps, {
+        follow,
+        unfollow,
+        setUsers,
+        setActivePage,
+        setTotalCount,
+        setIsLoading,
+    })(FindUsersAPIContainer)
 
 export default FindUsersContainer;
