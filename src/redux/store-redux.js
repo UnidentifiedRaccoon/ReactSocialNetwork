@@ -4,6 +4,7 @@ import chatsPageReducer from './reducers/chatsPage-reducer'
 import findUsersPageReducer from './reducers/findUsersPage-reducer'
 import coursesPageReducer from './reducers/coursesPage-reducer'
 import sideBarReducer from './reducers/sideBar-reducer'
+import authReducer from "./reducers/auth-reducer"
 
 
 let reducers = combineReducers({
@@ -12,6 +13,7 @@ let reducers = combineReducers({
         findUsersPage: findUsersPageReducer,
         coursesPage: coursesPageReducer,
         sideBar: sideBarReducer,
+        auth: authReducer
     }
 );
 
