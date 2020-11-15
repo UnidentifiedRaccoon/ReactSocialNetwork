@@ -62,4 +62,4 @@ export const actionCreatorAddNewMessage = () => ({type: ADD_NEW_MESSAGE});
 export const actionCreatorOnChangeNewMessage = (newText) =>
     ({type: ON_CHANGE_NEW_MESSAGE, newText});
 
-export default chatsPageReducer
+export default chatsPageReducer;
