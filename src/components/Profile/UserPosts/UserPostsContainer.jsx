@@ -2,8 +2,8 @@ import React from 'react'
 import {
     actionCreatorOnClickAddPost,
     actionCreatorOnChangeUpdatePost
-} from '../../../redux/reducers/profilePage-reducer.js'
-import {UserPosts} from './UserPosts'
+} from '../../../redux/reducers/profilePage-reducer'
+import UserPosts from './UserPosts'
 import {connect} from 'react-redux'
 
 let mapStateToProps = (state) => {

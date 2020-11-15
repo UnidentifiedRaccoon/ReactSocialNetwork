@@ -1,6 +1,6 @@
 import React from 'react'
 // import cs from './UserPosts.module.css'
-import {PostList__item as Post} from './PostList__item/PostList__item.jsx'
+import {PostList__item as Post} from './PostList__item/PostList__item'
 
 const UserPosts = (props) => {
     let postsListElements = props.userPosts.postsData.map(post => <Post key={post.id} message={post.message} like={post.like} love={post.love}/>)
@@ -11,7 +11,7 @@ const UserPosts = (props) => {
 
     let onChangeUpdatePost = () => {
         let newText = textArea.current.value;
-        props.onChangeUpdatePost(newText)
+        props.onChangeUpdatePost(newText);
     }
 
     return (
@@ -30,4 +30,4 @@ const UserPosts = (props) => {
     )
 }
 
-export {UserPosts}
+export default UserPosts
