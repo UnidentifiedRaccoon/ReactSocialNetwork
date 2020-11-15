@@ -28,4 +28,4 @@ let mapDispatchToProps = (dispatch) => {
 
 const UserPostsContainer = connect(mapStateToProps, mapDispatchToProps)(UserPosts)
 
-export {UserPostsContainer}
+export default UserPostsContainer
