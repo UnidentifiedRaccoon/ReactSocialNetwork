@@ -1,13 +1,13 @@
 import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom'
 import './App.css';
-import {Navbar} from './components/Navbar/Navbar.jsx'
+import {Navbar} from './components/Navbar/Navbar'
 import ProfileContainer from './components/Profile/ProfileContainer'
-import {Chats} from './components/Chats/Chats.jsx'
-import {Courses} from './components/Courses/Courses.jsx'
-import {SideBar} from './components/SideBar/SideBar.jsx'
+import {Chats} from './components/Chats/Chats'
+import {Courses} from './components/Courses/Courses'
+import {SideBar} from './components/SideBar/SideBar'
 import FindUsersContainer from './components/FindUsers/FindUsersContainer'
-import HeaderContainer from './components/Header/HeaderContainer';
+import HeaderContainer from './components/Header/HeaderContainer'
 
 
 
