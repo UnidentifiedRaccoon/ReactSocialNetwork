@@ -10,16 +10,16 @@ import {
 import {connect} from 'react-redux'
 import FindUsers from './FindUsers'
 import Loading from '../Common/Loading/Loading'
-import * as axios from 'axios'
+import { usersAPI } from '../../api/api';
 
 
 class FindUsersAPIContainer extends React.Component {
     componentDidMount() {
         this.props.setIsLoading(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.count}`, {withCredentials: true,})
-            .then(response => {
-                this.props.setUsers(response.data.items);
-                this.props.setTotalCount(response.data.totalCount);
+        usersAPI.getUsers(this.props.currentPage, this.props.count)
+            .then(data => {
+                this.props.setUsers(data.items);
+                this.props.setTotalCount(data.totalCount);
                 this.props.setIsLoading(false);
             })
     }
@@ -27,9 +27,9 @@ class FindUsersAPIContainer extends React.Component {
     onClickActivatePage = (pageNumber) => {
         this.props.setActivePage(pageNumber);
         this.props.setIsLoading(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.count}`, {withCredentials: true,})
-            .then(response => {
-                this.props.setUsers(response.data.items);
+        usersAPI.getUsers(pageNumber, this.props.count)
+            .then(data => {
+                this.props.setUsers(data.items);
                 this.props.setIsLoading(false);
             })
     }

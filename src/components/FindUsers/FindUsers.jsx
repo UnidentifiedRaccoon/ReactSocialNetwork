@@ -2,7 +2,7 @@ import React from 'react';
 import cs from './FindUsers.module.css'
 import icon from '../../assets/img/anon.png'
 import {NavLink} from 'react-router-dom'
-import Axios from 'axios';
+import { followAPI } from '../../api/api';
 
 const FindUsers = (props) => {
     let totalCount = props.totalCount;
@@ -40,28 +40,17 @@ const FindUsers = (props) => {
 
                                     {user.followed
                                         ? <button onClick={(e) => {
-                                            Axios.delete('https://social-network.samuraijs.com/api/1.0/follow/' + user.id, 
-                                            {
-                                                withCredentials: true,
-                                                headers: {
-                                                    'API-KEY': '99a57e6e-836b-49fd-9baf-590d0b28fa72',
-                                                }
-                                            })
-                                            .then(Response => {
-                                                if (Response.data.resultCode === 0) {
+                                            followAPI.doFollow(user.id)
+                                            .then(data => {
+                                                if (data.resultCode === 0) {
                                                     props.unfollow(user.id)
                                                 }
                                             })
                                         }}>Unfollow</button>
                                         : <button onClick={(e) => {
-                                            Axios.post('https://social-network.samuraijs.com/api/1.0/follow/' + user.id, {},
-                                            {   
-                                                withCredentials: true,
-                                                headers: {
-                                                    'API-KEY': '99a57e6e-836b-49fd-9baf-590d0b28fa72',
-                                            }})
-                                            .then(Response => {
-                                                if (Response.data.resultCode === 0) {
+                                            followAPI.doUnfollow(user.id)
+                                            .then(data => {
+                                                if (data.resultCode === 0) {
                                                     props.follow(user.id)
                                                 }
                                         })

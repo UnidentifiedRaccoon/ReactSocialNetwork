@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom'
 import './App.css';
-import {Navbar} from './components/Navbar/Navbar'
+import Navbar from './components/Navbar/Navbar'
 import ProfileContainer from './components/Profile/ProfileContainer'
 import {Chats} from './components/Chats/Chats'
 import {Courses} from './components/Courses/Courses'
