@@ -6,6 +6,7 @@ import {
     setActivePage,
     setTotalCount,
     setIsLoading,
+    setSubscriptionInProgress,
 } from '../../redux/reducers/findUsersPage-reducer'
 import {connect} from 'react-redux'
 import FindUsers from './FindUsers'
@@ -46,6 +47,8 @@ class FindUsersAPIContainer extends React.Component {
                            follow={this.props.follow}
                            unfollow={this.props.unfollow}
                            onClickActivatePage={this.onClickActivatePage}
+                           subscriptionInProgress={this.props.subscriptionInProgress}
+                           setSubscriptionInProgress={this.props.setSubscriptionInProgress}
                 />
             </>
         )
@@ -60,8 +63,10 @@ let mapStateToProps = (state) => ({
     count: state.findUsersPage.count,
     totalCount: state.findUsersPage.totalCount,
     currentPage: state.findUsersPage.currentPage,
-    isLoading: state.findUsersPage.isLoading
+    isLoading: state.findUsersPage.isLoading,
+    subscriptionInProgress: state.findUsersPage.subscriptionInProgress,
 })
+
 const FindUsersContainer = connect(mapStateToProps, {
         follow,
         unfollow,
@@ -69,6 +74,7 @@ const FindUsersContainer = connect(mapStateToProps, {
         setActivePage,
         setTotalCount,
         setIsLoading,
+        setSubscriptionInProgress,
     })(FindUsersAPIContainer)
 
 export default FindUsersContainer;

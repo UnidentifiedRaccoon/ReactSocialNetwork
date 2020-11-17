@@ -4,6 +4,7 @@ const SET_USERS = 'SET-USERS'
 const SET_ACTIVE_PAGE = 'SET-ACTIVE-PAGE'
 const SET_TOTAL_COUNT = 'SET-TOTAL-COUNT'
 const SET_IS_LOADING = 'SET-IS-LOADING'
+const SET_SUBSCRIPTION_IN_PROGRES = 'SET-SUBSCRIPTION-IN-PROGRES'
 
 
 let initialState = {
@@ -12,6 +13,7 @@ let initialState = {
     count: 10,
     currentPage: 1,
     isLoading: true,
+    subscriptionInProgress: [],
 };
 
 const findUsersPageReducer = (state = initialState, action) => {
@@ -62,6 +64,22 @@ const findUsersPageReducer = (state = initialState, action) => {
                 isLoading: action.isLoading,
             }
         }
+        case SET_SUBSCRIPTION_IN_PROGRES: {
+            if (action.error) {
+                console.log('Обработка ошибки в SET_SUBSCRIPTION_IN_PROGRES')
+                return {
+                    ...state,
+                    subscriptionInProgress: state.subscriptionInProgress.filter(id => (id != action.userId))
+                }
+            }
+            return {
+                ...state,
+                subscriptionInProgress: action.isFetching 
+                    ? [...state.subscriptionInProgress, action.userId]
+                    : state.subscriptionInProgress.filter(id => (id != action.userId))
+
+            }
+        }
         default: {
             return state
         }
@@ -76,6 +94,7 @@ export const setUsers = (users) => ({type: SET_USERS, usersData: users})
 export const setActivePage = (pageNumber) => ({type: SET_ACTIVE_PAGE, pageNumber})
 export const setTotalCount = (totalCount) => ({type: SET_TOTAL_COUNT, totalCount})
 export const setIsLoading = (isLoading) => ({type: SET_IS_LOADING, isLoading})
+export const setSubscriptionInProgress = (isFetching, userId, error=false) => ({type: SET_SUBSCRIPTION_IN_PROGRES, isFetching, userId, error})
 
 
 

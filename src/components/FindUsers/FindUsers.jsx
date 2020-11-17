@@ -4,6 +4,10 @@ import icon from '../../assets/img/anon.png'
 import {NavLink} from 'react-router-dom'
 import { followAPI } from '../../api/api';
 
+let showSystemMessage = (message) => {
+    alert(message);
+}
+
 const FindUsers = (props) => {
     let totalCount = props.totalCount;
     let count = props.count;
@@ -39,19 +43,29 @@ const FindUsers = (props) => {
 
 
                                     {user.followed
-                                        ? <button onClick={(e) => {
+                                        ? <button disabled={props.subscriptionInProgress.some(id => (id === user.id))} onClick={(e) => {
+                                            props.setSubscriptionInProgress(true, user.id)
                                             followAPI.doFollow(user.id)
                                             .then(data => {
                                                 if (data.resultCode === 0) {
-                                                    props.unfollow(user.id)
+                                                    props.unfollow(user.id);
+                                                    props.setSubscriptionInProgress(false, user.id);    
+                                                } else {
+                                                    showSystemMessage(data)
+                                                    props.setSubscriptionInProgress(false, user.id, true);   
                                                 }
                                             })
                                         }}>Unfollow</button>
-                                        : <button onClick={(e) => {
+                                        : <button disabled={props.subscriptionInProgress.some(id => (id === user.id))} onClick={(e) => {
+                                            props.setSubscriptionInProgress(true, user.id)
                                             followAPI.doUnfollow(user.id)
                                             .then(data => {
                                                 if (data.resultCode === 0) {
                                                     props.follow(user.id)
+                                                    props.setSubscriptionInProgress(false, user.id)    
+                                                } else {
+                                                    showSystemMessage(data)
+                                                    props.setSubscriptionInProgress(false, user.id, true) ;   
                                                 }
                                         })
                                         }}>Follow</button>}
