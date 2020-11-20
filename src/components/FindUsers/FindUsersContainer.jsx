@@ -48,7 +48,6 @@ class FindUsersAPIContainer extends React.Component {
 
 }
 
-
 let mapStateToProps = (state) => ({
     usersData: state.findUsersPage.usersData,
     count: state.findUsersPage.count,
