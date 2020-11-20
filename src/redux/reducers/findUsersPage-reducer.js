@@ -1,3 +1,5 @@
+import { followAPI, usersAPI } from '../../api/api';
+
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET-USERS'
@@ -96,5 +98,59 @@ export const setTotalCount = (totalCount) => ({type: SET_TOTAL_COUNT, totalCount
 export const setIsLoading = (isLoading) => ({type: SET_IS_LOADING, isLoading})
 export const setSubscriptionInProgress = (isFetching, userId, error=false) => ({type: SET_SUBSCRIPTION_IN_PROGRES, isFetching, userId, error})
 
+export const firstGetUsersThunkCreator = (pageNumber,count) => (dispatch) => {
+    dispatch(setIsLoading(true));
+    usersAPI.getUsers(pageNumber, count)
+        .then(data => {
+            dispatch(setUsers(data.items));
+            dispatch(setTotalCount(data.totalCount));
+            dispatch(setIsLoading(false));
+        })
+}
 
+
+export const getUsersThunkCreator = (pageNumber,count) => (dispatch) => {
+    dispatch(setActivePage(pageNumber));
+    dispatch(setIsLoading(true));
+    usersAPI.getUsers(pageNumber, count)
+        .then(data => {
+            dispatch(setUsers(data.items));
+            dispatch(setTotalCount(data.totalCount));
+            dispatch(setIsLoading(false));
+        })
+}
+
+let showSystemMessage = (message) => { // Для информирования об ошибках в followTC и unfollowTC
+    alert(message);
+}
+
+export const unfollowTC = (userId) => (dispatch) => { 
+    dispatch(setSubscriptionInProgress(true, userId));
+    followAPI.doUnfollow(userId)
+    .then(data => {
+        if (data.resultCode === 0) {
+            dispatch(unfollow(userId));
+            dispatch(setSubscriptionInProgress(false, userId));    
+        } else {
+            dispatch(showSystemMessage(data));
+            dispatch(setSubscriptionInProgress(false, userId, true));   
+        }
+    })
+}
+
+
+
+export const followTC = (userId) => (dispatch) => {
+    dispatch(setSubscriptionInProgress(true, userId));
+    followAPI.doFollow(userId)
+    .then(data => {
+        if (data.resultCode === 0) {
+            dispatch(follow(userId));
+            dispatch(setSubscriptionInProgress(false, userId));  
+        } else {
+            dispatch(showSystemMessage(data));
+            dispatch(setSubscriptionInProgress(false, userId, true));  
+        }
+    })
+}
 

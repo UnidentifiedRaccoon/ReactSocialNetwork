@@ -7,32 +7,23 @@ import {
     setTotalCount,
     setIsLoading,
     setSubscriptionInProgress,
+    getUsersThunkCreator,
+    firstGetUsersThunkCreator,
+    followTC,
+    unfollowTC,
 } from '../../redux/reducers/findUsersPage-reducer'
 import {connect} from 'react-redux'
 import FindUsers from './FindUsers'
 import Loading from '../Common/Loading/Loading'
-import { usersAPI } from '../../api/api';
 
 
 class FindUsersAPIContainer extends React.Component {
     componentDidMount() {
-        this.props.setIsLoading(true);
-        usersAPI.getUsers(this.props.currentPage, this.props.count)
-            .then(data => {
-                this.props.setUsers(data.items);
-                this.props.setTotalCount(data.totalCount);
-                this.props.setIsLoading(false);
-            })
+        this.props.firstGetUsersThunkCreator(this.props.currentPage, this.props.count)
     }
 
     onClickActivatePage = (pageNumber) => {
-        this.props.setActivePage(pageNumber);
-        this.props.setIsLoading(true);
-        usersAPI.getUsers(pageNumber, this.props.count)
-            .then(data => {
-                this.props.setUsers(data.items);
-                this.props.setIsLoading(false);
-            })
+        this.props.getUsersThunkCreator(pageNumber, this.props.count)
     }
 
     render() {
@@ -44,8 +35,8 @@ class FindUsersAPIContainer extends React.Component {
                            count={this.props.count}
                            currentPage={this.props.currentPage}
                            usersData={this.props.usersData}
-                           follow={this.props.follow}
-                           unfollow={this.props.unfollow}
+                           followTC={this.props.followTC}
+                           unfollowTC={this.props.unfollowTC}
                            onClickActivatePage={this.onClickActivatePage}
                            subscriptionInProgress={this.props.subscriptionInProgress}
                            setSubscriptionInProgress={this.props.setSubscriptionInProgress}
@@ -75,6 +66,10 @@ const FindUsersContainer = connect(mapStateToProps, {
         setTotalCount,
         setIsLoading,
         setSubscriptionInProgress,
+        firstGetUsersThunkCreator,
+        getUsersThunkCreator,
+        followTC,
+        unfollowTC,
     })(FindUsersAPIContainer)
 
 export default FindUsersContainer;

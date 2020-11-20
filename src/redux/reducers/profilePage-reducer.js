@@ -1,3 +1,5 @@
+import {authAPI, profileAPI} from '../../api/api'
+
 const ADD_NEW_POST = 'ADD-NEW-POST';
 const ON_CHANGE_NEW_POST = 'ON-CHANGE-NEW-POST';
 const SET_PROFILE = 'SET-PROFILE';
@@ -70,5 +72,12 @@ export const actionCreatorOnClickAddPost = () => ({type: ADD_NEW_POST});
 export const actionCreatorOnChangeUpdatePost = (newText) =>
     ({type: ON_CHANGE_NEW_POST, newText});
 export const setProfile = (profile) => ({type: SET_PROFILE, profile});
+
+export const getProfileTC = (userId) => (dispatch) => {
+    profileAPI.getProfile(userId)
+    .then(response => {
+        dispatch(setProfile(response.data))
+    })
+}
 
 export default profilePageReducer;
