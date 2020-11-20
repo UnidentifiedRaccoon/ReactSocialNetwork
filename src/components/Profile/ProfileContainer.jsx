@@ -3,7 +3,7 @@ import Profile from './Profile'
 import {connect} from 'react-redux'
 import {setProfile} from './../../redux/reducers/profilePage-reducer'
 import Loading from '../Common/Loading/Loading'
-import {withRouter} from 'react-router-dom'
+import {Redirect, withRouter} from 'react-router-dom'
 import { getProfileTC } from '../../redux/reducers/profilePage-reducer';
 
 
@@ -19,6 +19,7 @@ class ProfileAPIContainer extends React.Component {
     }
 
     render() {
+        if (!this.props.isAutorise) return <Redirect to='/Login'/>
         if(!this.props.profile) {
             return (
                 <Loading isLoading={true}/>
@@ -30,6 +31,7 @@ class ProfileAPIContainer extends React.Component {
 
 let mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
+    isAutorise: state.auth.isAutorise
 })
 
 let ProfileUrlDataContainer = withRouter(ProfileAPIContainer)

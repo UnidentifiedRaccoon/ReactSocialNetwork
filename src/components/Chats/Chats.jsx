@@ -1,6 +1,5 @@
 import React from 'react'
 import cs from './Chats.module.css'
-import {NavLink} from 'react-router-dom'
 import {ChatsContactsContainer} from './ChatsContacts/ChatsContactsContainer.jsx'
 import {ChatWindowContainer} from './ChatWindow/ChatWindowContainer.jsx'
 
@@ -15,5 +14,5 @@ const Chats = () => {
     )
 }
 
-export {Chats}
+export default Chats
 
