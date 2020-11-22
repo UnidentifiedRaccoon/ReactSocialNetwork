@@ -16,60 +16,45 @@ let initialState = {
     profile: null,
 };
 
-let onClickAddPost = (state) => {
-    let newPost = {
-        id: 2,
-        message: state.userPosts.newPostText,
-        like: -4,
-        love: -5
-    };
-    return {
-        ...state,
-        userPosts: {
-            ...state.userPosts,
-            postsData: [...state.userPosts.postsData, newPost],
-            newPostText: '',
-        }
-    }
-}
-
-
-let onChangeUpdatePost = (state, newText) => {
-    return {
-        ...state,
-        userPosts: {
-            ...state.userPosts,
-            newPostText: newText,
-        }
-    }
-}
-
-
 const profilePageReducer = (state = initialState, action) => {
     // debugger
     switch (action.type) {
         case ADD_NEW_POST:
-            return onClickAddPost(state);
-
+            let newPost = {
+                id: 2,
+                message: state.userPosts.newPostText,
+                like: -4,
+                love: -5
+            };
+            return {
+                ...state,
+                userPosts: {
+                    ...state.userPosts,
+                    postsData: [...state.userPosts.postsData, newPost],
+                    newPostText: '',
+                }
+            }
         case ON_CHANGE_NEW_POST:
-            return onChangeUpdatePost(state, action.newText);
+            return {
+                ...state,
+                userPosts: {
+                    ...state.userPosts,
+                    newPostText: action.newText,
+                }
+            }
         case SET_PROFILE: {
             return {
                 ...state,
                 profile: action.profile,
             }
         }
-
-
-
-
         default:
             return state;
     }
 }
 
-export const actionCreatorOnClickAddPost = () => ({type: ADD_NEW_POST});
-export const actionCreatorOnChangeUpdatePost = (newText) =>
+export const addNewPost = () => ({type: ADD_NEW_POST});
+export const updateNewPost = (newText) =>
     ({type: ON_CHANGE_NEW_POST, newText});
 export const setProfile = (profile) => ({type: SET_PROFILE, profile});
 

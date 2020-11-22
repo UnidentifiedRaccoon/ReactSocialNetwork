@@ -13,5 +13,5 @@ const ChatsContacts = (props) => {
     )
 }
 
-export {ChatsContacts}
+export default ChatsContacts
 

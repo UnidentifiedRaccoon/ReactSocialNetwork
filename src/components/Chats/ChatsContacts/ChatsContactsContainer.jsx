@@ -1,6 +1,14 @@
 import React from 'react'
-import {ChatsContacts} from './ChatsContacts'
+import ChatsContacts from './ChatsContacts'
 import {connect} from 'react-redux'
+import { compose } from 'redux'
+
+class ChatsContactsContainer extends React.Component {
+    render() {
+        return <ChatsContacts {...this.props}/>
+    }    
+}
+
 
 let mapStateToProps = (state) => {
     return {
@@ -8,11 +16,7 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {}
-}
-
-const ChatsContactsContainer = connect(mapStateToProps, mapDispatchToProps)(ChatsContacts);
-
-export {ChatsContactsContainer}
+export default compose(
+    connect(mapStateToProps, {}),
+)(ChatsContactsContainer)
 

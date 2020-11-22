@@ -22,44 +22,37 @@ let initialState = {
 };
 
 
-let addNewMessage = (state) => {
-    let newMessage = {
-        id: 4,
-        message: state.chatWindow.newMessageText
-    };
-    return {
-        ...state,
-        chatWindow: {
-            ...state.chatWindow,
-            messagesData: [...state.chatWindow.messagesData, newMessage],
-            newMessageText: ''
-        },
-    }
-}
-let onChangeNewMessage = (state, newText) => {
-    return {
-        ...state,
-        chatWindow: {
-            ...state.chatWindow,
-            newMessageText: newText,
-        }
-    }
-}
 const chatsPageReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_NEW_MESSAGE:
-            return addNewMessage(state);
-
+            let newMessage = {
+                id: 4,
+                message: state.chatWindow.newMessageText
+            };     
+            return {
+                ...state,
+                chatWindow: {
+                    ...state.chatWindow,
+                    messagesData: [...state.chatWindow.messagesData, newMessage],
+                    newMessageText: ''
+                },
+            }
         case ON_CHANGE_NEW_MESSAGE:
-            return onChangeNewMessage(state, action.newText);
+            return {
+                ...state,
+                chatWindow: {
+                    ...state.chatWindow,
+                    newMessageText: action.newText,
+                }
+            }
 
         default: return state;
 
     }
 }
 
-export const actionCreatorAddNewMessage = () => ({type: ADD_NEW_MESSAGE});
-export const actionCreatorOnChangeNewMessage = (newText) =>
+export const addNewMessage = () => ({type: ADD_NEW_MESSAGE});
+export const updateNewMessage = (newText) =>
     ({type: ON_CHANGE_NEW_MESSAGE, newText});
 
 export default chatsPageReducer;

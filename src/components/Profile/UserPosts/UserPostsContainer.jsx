@@ -1,31 +1,28 @@
 import React from 'react'
 import {
-    actionCreatorOnClickAddPost,
-    actionCreatorOnChangeUpdatePost
+    addNewPost,
+    updateNewPost
 } from '../../../redux/reducers/profilePage-reducer'
 import UserPosts from './UserPosts'
 import {connect} from 'react-redux'
+import { render } from '@testing-library/react';
+import { compose } from 'redux';
+
+class UserPostsContainer extends React.Component {
+  render() {
+        return <UserPosts {...this.props}/>
+    }
+}
 
 let mapStateToProps = (state) => {
     return {
         userPosts: state.profilePage.userPosts,
     }
-}
+} 
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        onClickAddPost: () => {
-            let action = actionCreatorOnClickAddPost();
-            dispatch(action);
-        },
-        onChangeUpdatePost: (newText) => {
-            let action = actionCreatorOnChangeUpdatePost(newText);
-            dispatch(action);
-        }
-    }
-}
-
-
-const UserPostsContainer = connect(mapStateToProps, mapDispatchToProps)(UserPosts)
-
-export default UserPostsContainer
+export default compose(
+    connect(mapStateToProps, {
+        addNewPost,
+        updateNewPost,
+    })
+)(UserPostsContainer)

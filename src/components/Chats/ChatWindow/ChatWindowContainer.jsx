@@ -1,7 +1,14 @@
 import React from 'react'
 import {ChatWindow} from './ChatWindow'
-import {actionCreatorAddNewMessage, actionCreatorOnChangeNewMessage} from '../../../redux/reducers/chatsPage-reducer'
+import {addNewMessage, updateNewMessage} from '../../../redux/reducers/chatsPage-reducer'
 import {connect} from 'react-redux'
+import { compose } from 'redux'
+
+class ChatsWindowContainer extends React.Component {
+    render() {
+        return <ChatWindow {...this.props}/>
+    }    
+}
 
 let mapStateToProps = (state) => {
     return {
@@ -9,19 +16,10 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        onClickAddMessage: () => {
-            let action = actionCreatorAddNewMessage();
-            dispatch(action);
-        },
-        onChangeUpdateMessage: (newText) => {
-            let action = actionCreatorOnChangeNewMessage(newText);
-            dispatch(action);
-        }
-    }
-}
-
-const ChatWindowContainer = connect(mapStateToProps, mapDispatchToProps)(ChatWindow)
-
-export {ChatWindowContainer}
+export default compose(
+    connect(mapStateToProps,
+        {
+            addNewMessage, 
+            updateNewMessage,
+        })
+)(ChatsWindowContainer)

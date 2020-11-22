@@ -1,7 +1,7 @@
 import React from 'react'
 import cs from './Chats.module.css'
-import {ChatsContactsContainer} from './ChatsContacts/ChatsContactsContainer.jsx'
-import {ChatWindowContainer} from './ChatWindow/ChatWindowContainer.jsx'
+import ChatsContactsContainer from './ChatsContacts/ChatsContactsContainer.jsx'
+import ChatWindowContainer from './ChatWindow/ChatWindowContainer.jsx'
 
 
 const Chats = () => {

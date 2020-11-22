@@ -15,9 +15,10 @@ import {
 import {connect} from 'react-redux'
 import FindUsers from './FindUsers'
 import Loading from '../Common/Loading/Loading'
+import { compose } from 'redux';
 
 
-class FindUsersAPIContainer extends React.Component {
+class FindUsersContainer extends React.Component {
     componentDidMount() {
         this.props.firstGetUsersThunkCreator(this.props.currentPage, this.props.count)
     }
@@ -27,7 +28,6 @@ class FindUsersAPIContainer extends React.Component {
     }
 
     render() {
-        let isFetching = false;
         return (
             <>
                 <Loading isLoading={this.props.isLoading}/>
@@ -57,7 +57,9 @@ let mapStateToProps = (state) => ({
     subscriptionInProgress: state.findUsersPage.subscriptionInProgress,
 })
 
-const FindUsersContainer = connect(mapStateToProps, {
+
+export default compose(
+    connect(mapStateToProps, {
         follow,
         unfollow,
         setUsers,
@@ -69,6 +71,5 @@ const FindUsersContainer = connect(mapStateToProps, {
         getUsersThunkCreator,
         followTC,
         unfollowTC,
-    })(FindUsersAPIContainer)
-
-export default FindUsersContainer;
+    })
+)(FindUsersContainer)

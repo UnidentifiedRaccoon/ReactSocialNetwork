@@ -5,12 +5,9 @@ import  {MessageItem} from './MessageItem/MessageItem.jsx'
 const ChatWindow = (props) => {
     let messagesListElements = props.chatWindow.messagesData.map(messageItem => <MessageItem key={messageItem.id} message={messageItem.message}/>)
     let textArea = React.createRef();
-    let onClickAddMessage = () => {
-        props.onClickAddMessage()
-    }
-    let onChangeUpdateMessage = () => {
+    let updateNewMessage = () => {
         let newText = textArea.current.value;
-        props.onChangeUpdateMessage(newText);
+        props.updateNewMessage(newText);
     }
 
     return(
@@ -18,8 +15,8 @@ const ChatWindow = (props) => {
             <ul className={cs.messagesList}>
                 {messagesListElements}
             </ul>
-            <textarea onChange={onChangeUpdateMessage} ref={textArea} value={props.chatWindow.newMessageText}></textarea>
-            <button onClick={onClickAddMessage}>Add message</button>
+            <textarea onChange={updateNewMessage} ref={textArea} value={props.chatWindow.newMessageText}></textarea>
+            <button onClick={props.addNewMessage}>Add message</button>
         </section>
 
     )
