@@ -15,7 +15,7 @@ class ChatsContainer extends React.Component {
 }
 
 export default compose(
-  withAuthRedirect,
+  // withAuthRedirect,
 )(ChatsContainer)
 
 

@@ -6,6 +6,8 @@ import coursesPageReducer from './reducers/coursesPage-reducer'
 import sideBarReducer from './reducers/sideBar-reducer'
 import authReducer from "./reducers/auth-reducer"
 import thunkMiddleWare from 'redux-thunk'
+import { reducer as formReducer } from 'redux-form'
+
 
 
 let reducers = combineReducers({
@@ -14,7 +16,8 @@ let reducers = combineReducers({
         findUsersPage: findUsersPageReducer,
         coursesPage: coursesPageReducer,
         sideBar: sideBarReducer,
-        auth: authReducer
+        auth: authReducer,
+        form: formReducer,
     }
 );
 
