@@ -6,3 +6,7 @@
   grid-auto-rows: minmax(100px, auto);
   justify-items: stretch;
 }
+
+.app-main-content {
+  display: block;
+}
