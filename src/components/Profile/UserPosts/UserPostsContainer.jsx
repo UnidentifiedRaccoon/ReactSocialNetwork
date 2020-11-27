@@ -1,11 +1,7 @@
 import React from 'react'
-import {
-    addNewPost,
-    updateNewPost
-} from '../../../redux/reducers/profilePage-reducer'
+import { addNewPost } from '../../../redux/reducers/profilePage-reducer'
 import UserPosts from './UserPosts'
-import {connect} from 'react-redux'
-import { render } from '@testing-library/react';
+import { connect } from 'react-redux'
 import { compose } from 'redux';
 
 class UserPostsContainer extends React.Component {
@@ -22,7 +18,6 @@ let mapStateToProps = (state) => {
 
 export default compose(
     connect(mapStateToProps, {
-        addNewPost,
-        updateNewPost,
+        addNewPost
     })
 )(UserPostsContainer)

@@ -13,7 +13,7 @@ const LoginForm = (props) => {
                 <Field className={cs.input} component={"input"} name={"password"} type={"password"} placeholder={"Password"}/>
                 </label>
                 <label className={cs.checkboxLabel}>
-                <Field className={cs.checkbox} component={"input"} name={"RememberMe"} type={"checkbox"} value={"RememberMe"}/>
+                <Field className={cs.checkbox} component={"input"} name={"RememberMe"} type={"checkbox"}/>
                 <span className={cs.labelText}>RememberMe</span>
                 </label>
                 <button className={cs.sendButton}>Send</button>

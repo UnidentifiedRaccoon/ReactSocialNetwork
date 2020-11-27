@@ -1,5 +1,4 @@
 const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE';
-const ON_CHANGE_NEW_MESSAGE = 'ON-CHANGE-NEW-MESSAGE';
 
 let initialState = {
     chatsContacts: {
@@ -17,7 +16,6 @@ let initialState = {
             {id: 1, message: 'Thanos\'s snap'},
             {id: 2, message: 'Your interlocutor was annihilate'},
         ],
-        newMessageText: 'pingvin'
     }
 };
 
@@ -27,32 +25,20 @@ const chatsPageReducer = (state = initialState, action) => {
         case ADD_NEW_MESSAGE:
             let newMessage = {
                 id: 4,
-                message: state.chatWindow.newMessageText
+                message: action.messageText
             };     
             return {
                 ...state,
                 chatWindow: {
                     ...state.chatWindow,
                     messagesData: [...state.chatWindow.messagesData, newMessage],
-                    newMessageText: ''
                 },
             }
-        case ON_CHANGE_NEW_MESSAGE:
-            return {
-                ...state,
-                chatWindow: {
-                    ...state.chatWindow,
-                    newMessageText: action.newText,
-                }
-            }
-
         default: return state;
 
     }
 }
 
-export const addNewMessage = () => ({type: ADD_NEW_MESSAGE});
-export const updateNewMessage = (newText) =>
-    ({type: ON_CHANGE_NEW_MESSAGE, newText});
+export const addNewMessage = (messageText) => ({type: ADD_NEW_MESSAGE, messageText});
 
 export default chatsPageReducer;

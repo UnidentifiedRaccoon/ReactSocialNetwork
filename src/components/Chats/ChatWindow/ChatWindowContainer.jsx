@@ -1,6 +1,6 @@
 import React from 'react'
-import {ChatWindow} from './ChatWindow'
-import {addNewMessage, updateNewMessage} from '../../../redux/reducers/chatsPage-reducer'
+import ChatWindow from './ChatWindow'
+import {addNewMessage} from '../../../redux/reducers/chatsPage-reducer'
 import {connect} from 'react-redux'
 import { compose } from 'redux'
 
@@ -20,6 +20,5 @@ export default compose(
     connect(mapStateToProps,
         {
             addNewMessage, 
-            updateNewMessage,
         })
 )(ChatsWindowContainer)
