@@ -1,0 +1,11 @@
+
+.formControl textarea.error,
+.formControl input.error {
+    border: 2px solid red;
+}
+
+.formControl textarea + span,
+.formControl input + span {
+    text-transform: uppercase;
+    color: rosybrown;
+}

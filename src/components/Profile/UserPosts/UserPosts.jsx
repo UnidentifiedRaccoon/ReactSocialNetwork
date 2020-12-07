@@ -1,7 +1,7 @@
 import React from 'react'
 // import cs from './UserPosts.module.css'
 import {PostList__item as Post} from './PostList__item/PostList__item'
-import PostFormRedux from './PostForm/PostForm'
+import PostForm from './PostForm/PostForm'
 
 const UserPosts = (props) => {
     let postsListElements = props.userPosts.postsData.map(post => <Post key={post.id} message={post.message} like={post.like} love={post.love}/>)
@@ -13,7 +13,7 @@ const UserPosts = (props) => {
     return (
         <section className='userPosts'>
             <b>My posts</b>
-            <PostFormRedux onSubmit={onSubmit}/>
+            <PostForm onSubmit={onSubmit}/>
             <section className='postsFeed'>
                 <ul className='postsFeed__list'>
                     {postsListElements}

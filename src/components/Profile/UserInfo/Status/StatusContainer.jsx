@@ -57,7 +57,6 @@ class StatusContainer extends React.Component {
 
 
 let mapStateToProps = (state) => {
-    console.log(state)
     return {
         statusText: state.profilePage.status
     }
