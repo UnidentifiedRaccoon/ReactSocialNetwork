@@ -6,9 +6,10 @@ import ProfileContainer from './components/Profile/ProfileContainer'
 import ChatsContainer from './components/Chats/ChatsContainer'
 import {Courses} from './components/Courses/Courses'
 import {SideBar} from './components/SideBar/SideBar'
-import Login from './components/Login/Login'
+// import Login from './components/Login/Login'
 import FindUsersContainer from './components/FindUsers/FindUsersContainer'
 import HeaderContainer from './components/Header/HeaderContainer'
+import LoginContainer from './components/Login/LoginContainer';
 
 
 
@@ -21,7 +22,7 @@ const App = (props) => {
                 <HeaderContainer/>
                 <Navbar/>
                 <div className='app-main-content'>
-                    <Route path='/Login' render={ () => <Login/>}/>
+                    <Route path='/Login' render={ () => <LoginContainer/>}/>
                     <Route path='/Profile/:userID?' render={ () => <ProfileContainer/>}/>
                     <Route path='/Chats' render={ () => <ChatsContainer/>}/>
                     <Route path='/FindUsers' render={ () => <FindUsersContainer/>}/>
