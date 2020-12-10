@@ -8,7 +8,7 @@ const Header = (props) => {
                 <b>Chat&Code</b>
                 <div className={cs.loginBlock}>
                     {
-                        props.isAutorise
+                        props.isAutorized
                         ? <div>
                             <span>{props.login}</span>
                             <button onClick={props.logout}>Logout</button>

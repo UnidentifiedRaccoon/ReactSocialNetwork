@@ -9,8 +9,8 @@ let minLength8 = minLength(8);
 
 const LoginForm = (props) => {
     return (
-            <form  className={cs.form} onSubmit={props.handleSubmit}>
-                <label><span className={cs.labelText}>Login</span>
+        <form  className={cs.form} onSubmit={props.handleSubmit}>
+            <label><span className={cs.labelText}>Login</span>
                 <Field  className={cs.input} 
                         component={Input} 
                         name={"email"}
@@ -29,6 +29,12 @@ const LoginForm = (props) => {
                 <Field className={cs.checkbox} component={"input"} name={"rememberMe"} type={"checkbox"}/>
                 <span className={cs.labelText}>RememberMe</span>
                 </label>
+                <div>
+                        { props.error && 
+                        <div className={cs.formSummaryError}>
+                                <span>{props.error}</span>
+                        </div>}
+                </div>
                 <button className={cs.sendButton}>Send</button>
             </form>
         )

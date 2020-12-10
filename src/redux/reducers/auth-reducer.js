@@ -1,4 +1,5 @@
- import {authAPI} from '../../api/api'
+ import { stopSubmit } from 'redux-form';
+import {authAPI} from '../../api/api'
 
 
 const SET_USER_DATA = 'SET-USER-DATA';
@@ -8,7 +9,7 @@ let initialState = {
     userId: null,
     login: null,
     email: null,
-    isAutorise: false,
+    isAutorized: false,
 }
 
 const authReducer = (state = initialState, action) => {
@@ -17,7 +18,7 @@ const authReducer = (state = initialState, action) => {
             return ({
                 ...state,
                 ...action.data,
-                isAutorise: true,
+                isAutorized: true,
             });
         case UNSET_USER_DATA:
             return ({
@@ -25,7 +26,7 @@ const authReducer = (state = initialState, action) => {
                 userId: null,
                 login: null,
                 email: null,
-                isAutorise: false,
+                isAutorized: false,
             })
         default:
             return state;
@@ -37,13 +38,15 @@ export const setAuthUserData = (userId, login, email) => ({type: SET_USER_DATA, 
 export const unsetAuthUserData = () => ({type: UNSET_USER_DATA})
 
 export const getAuthTC = () => (dispatch) => {
-    authAPI.auth()
-    .then(data => {
-        if (data.resultCode == 0) {
-            let {id, login, email} = data.data;
-            dispatch(setAuthUserData(id, login, email));
-        }
-    })
+    return (
+        authAPI.auth()
+        .then(data => {
+             if (data.resultCode == 0) {
+                let {id, login, email} = data.data;
+                dispatch(setAuthUserData(id, login, email));
+             }
+        })
+    )
 }
 
 export const login = (email, password, rememberMe) => (dispatch) => {
@@ -51,6 +54,9 @@ export const login = (email, password, rememberMe) => (dispatch) => {
     .then(data => {
         if (data.resultCode == 0) {
             dispatch(getAuthTC());
+        } else {
+            let message = data.messages;
+            dispatch(stopSubmit('login', {_error: message}))
         }
     })
 }

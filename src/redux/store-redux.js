@@ -7,10 +7,12 @@ import sideBarReducer from './reducers/sideBar-reducer'
 import authReducer from "./reducers/auth-reducer"
 import thunkMiddleWare from 'redux-thunk'
 import { reducer as formReducer } from 'redux-form'
+import appReducer from "./reducers/app-reducer"
 
 
 
 let reducers = combineReducers({
+        app: appReducer,
         profilePage: profilePageReducer,
         chatsPage: chatsPageReducer,
         findUsersPage: findUsersPageReducer,

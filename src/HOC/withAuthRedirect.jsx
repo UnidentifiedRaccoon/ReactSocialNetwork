@@ -3,15 +3,18 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 let mapStateToPropsForRedirect = (state) => ({
-    isAutorise: state.auth.isAutorise,
+    isAutorized: state.auth.isAutorized,
 })
 
 const withAuthRedirect = (Component) => {
     class ComponentClassContainer extends React.Component {
 
         render() {
-            if (!this.props.isAutorise) return <Redirect to='/Login'/>
-            return  <Component {...this.props}/>
+            if (!this.props.isAutorized) return <Redirect to='/Login'/>
+            else {
+               return  <Component {...this.props}/>             
+            }
+
         }
     }
     let ComponentContainer = connect(mapStateToPropsForRedirect, {})(ComponentClassContainer)

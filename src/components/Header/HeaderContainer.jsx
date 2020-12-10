@@ -5,9 +5,6 @@ import {getAuthTC, logout, setAuthUserData} from '../../redux/reducers/auth-redu
 import { compose } from 'redux';
 
 class HeaderContainer extends React.Component {
-    componentDidMount() {
-        this.props.getAuthTC()
-    }
     render() {
          return <Header {...this.props}/>;
     }
@@ -15,10 +12,10 @@ class HeaderContainer extends React.Component {
 }
 
 let mapStateToProps = (state) => ({
-    isAutorise: state.auth.isAutorise,
+    isAutorized: state.auth.isAutorized,
     login: state.auth.login,
 })
 
 export default compose(
-    connect(mapStateToProps, {setAuthUserData, getAuthTC, logout})
+    connect(mapStateToProps, {setAuthUserData, logout})
 )(HeaderContainer)
